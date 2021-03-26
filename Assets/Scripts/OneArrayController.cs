@@ -12,11 +12,11 @@ public class OneArrayController : MonoBehaviour
     {
         if (numOfX == 3)
         {
-
+            FindObjectOfType<GameManager>().Victory("X");
         }
         else if (numOfO == 3)
         {
-
+            FindObjectOfType<GameManager>().Victory("O");
         }
     }
 }

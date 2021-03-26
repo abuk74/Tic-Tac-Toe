@@ -12,11 +12,22 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         round = "X";
-        StartCoroutine(ChangeRound());
+        StartCoroutine(ChangeRoundText());
     }
-    IEnumerator ChangeRound()
+    public void ChangePlayerName()
+    {
+        if (round == "X")
+            round = "O";
+        else
+            round = "X";
+    }
+    IEnumerator ChangeRoundText()
     {
         yield return new WaitForEndOfFrame();
         roundText.text = "Round" + round;
+    }
+    public void Victory(string playerName)
+    {
+
     }
 }

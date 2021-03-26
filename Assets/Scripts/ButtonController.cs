@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class ButtonController : MonoBehaviour
 {
     public string text;
+    private Button button;
 
     void Start()
     {
-
+        button = this.gameObject.GetComponent<Button>();
     }
     void FixedUpdate()
     {
@@ -25,5 +26,13 @@ public class ButtonController : MonoBehaviour
                 GetComponentInParent<OneArrayController>().numOfO++;
             }
         }
+    }
+    public void SetText()
+    {
+        GameManager gm = FindObjectOfType<GameManager>();
+        text = gm.round;
+        button.GetComponentInChildren<Text>().text = text;
+        button.interactable = false;
+        gm.ChangePlayerName();
     }
 }
