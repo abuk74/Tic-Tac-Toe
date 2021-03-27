@@ -14,25 +14,24 @@ public class ButtonController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        text = this.gameObject.transform.GetChild(0).GetComponent<Text>().text;
-        if (text.Length != 0)
-        {
-            if (text == "X")
-            {
-                GetComponentInParent<OneArrayController>().numOfX++;
-            }
-            else
-            {
-                GetComponentInParent<OneArrayController>().numOfO++;
-            }
-        }
+        
     }
     public void SetText()
     {
         GameManager gm = FindObjectOfType<GameManager>();
         text = gm.round;
+        if (text == "X")
+        {
+            GetComponentInParent<OneArrayController>().numOfX++;
+        }
+        else
+        {
+            GetComponentInParent<OneArrayController>().numOfO++;
+        }
         button.GetComponentInChildren<Text>().text = text;
         button.interactable = false;
+        gm.ChceckVertical();
+        gm.CheckDiagonal();
         gm.ChangePlayerName();
     }
 }
